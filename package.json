@@ -1,0 +1,59 @@
+{
+  "name": "bulwark",
+  "version": "0.1.0",
+  "description": "Raft consensus in TypeScript, held up by deterministic simulation: seeded partitions and crashes, the paper's five safety properties checked continuously, and every client history verified linearizable.",
+  "keywords": [
+    "raft",
+    "consensus",
+    "distributed-systems",
+    "linearizability",
+    "deterministic-simulation",
+    "fault-injection",
+    "replication",
+    "testing"
+  ],
+  "license": "MIT",
+  "author": "BOTIROFF-D",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOTIROFF-D/bulwark.git"
+  },
+  "homepage": "https://github.com/BOTIROFF-D/bulwark#readme",
+  "bugs": "https://github.com/BOTIROFF-D/bulwark/issues",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "museum": "vitest run museum",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "unflake": "^0.3.0",
+    "vitest": "^2.1.8"
+  }
+}
