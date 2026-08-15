@@ -1,5 +1,5 @@
 {
-  "name": "bulwark",
+  "name": "@botiroff/bulwark",
   "version": "0.1.0",
   "description": "Raft consensus in TypeScript, held up by deterministic simulation: seeded partitions and crashes, the paper's five safety properties checked continuously, and every client history verified linearizable.",
   "keywords": [
@@ -22,6 +22,9 @@
   "bugs": "https://github.com/BOTIROFF-D/bulwark/issues",
   "type": "module",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

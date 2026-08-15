@@ -3,6 +3,7 @@
 **Raft consensus in TypeScript, held up by deterministic simulation.** Seeded partitions and crashes, the paper's five safety properties checked at every state transition, and every client history verified linearizable.
 
 [![CI](https://github.com/BOTIROFF-D/bulwark/actions/workflows/ci.yml/badge.svg)](https://github.com/BOTIROFF-D/bulwark/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/%40botiroff%2Fbulwark)](https://www.npmjs.com/package/@botiroff/bulwark)
 ![node](https://img.shields.io/badge/node-%E2%89%A518-blue)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
@@ -79,6 +80,12 @@ A test that only checked "did the writes end up right" would have passed. A test
 ## Usage
 
 ```bash
+npm install @botiroff/bulwark
+```
+
+Or to work on it:
+
+```bash
 npm install
 npm test        # the implementation, under fault injection
 npm run museum  # every exhibit, ~6 seconds
@@ -86,7 +93,7 @@ npm run museum  # every exhibit, ~6 seconds
 
 ```ts
 import { check } from "unflake";
-import { runScenario, SafetyMonitor, checkLinearizable, operationsFrom, HOSTILE } from "bulwark";
+import { runScenario, SafetyMonitor, checkLinearizable, operationsFrom, HOSTILE } from "@botiroff/bulwark";
 
 await check("raft stays safe", async (sim) => {
   const { cluster } = await runScenario(sim, {
