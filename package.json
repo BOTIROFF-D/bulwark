@@ -49,6 +49,9 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
+  "peerDependencies": {
+    "unflake": "^0.3.0"
+  },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "tsup": "^8.3.5",
