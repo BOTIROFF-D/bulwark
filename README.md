@@ -121,7 +121,11 @@ Stated plainly, because a consensus implementation that oversells itself is wors
 
 **The model is the model.** Faults are message loss, delay, reordering, duplication, partitions, and crash-restart with durable state preserved. Not modelled: disk corruption, partial writes, clock skew between nodes, Byzantine behaviour, or a network that delivers to some recipients and not others within one broadcast.
 
-**Passing is not proof.** Hundreds of seeds is hundreds of schedules from a space that is astronomically larger. It is a very good fuzz run, not a theorem. TLA+ specifications of Raft exist and prove things this cannot.
+**Passing is not proof.** Hundreds of seeds is hundreds of schedules from a space that is astronomically larger. It is a very good fuzz run, not a theorem.
+
+Where a theorem is available, it is worth having. [pnueli](https://github.com/BOTIROFF-D/pnueli) model-checks Election Safety on a bounded specification of the same algorithm and visits every reachable state: 2,428 for three nodes over three terms, 6,801,084 for five nodes. Remove one-vote-per-term from that specification and two leaders in one term is simply reachable — the same failure this repository has to construct by hand, by killing a node in the one-tick window between granting a vote and persisting it.
+
+The two answer different questions and neither replaces the other. A proof about a specification says the algorithm is sound; it says nothing about whether this code implements that algorithm, which is what the fault injection here is for.
 
 **The linearizability checker can give up.** NP-complete in general; the budget is finite; `inconclusive` is a real outcome and is reported as one rather than rounded to "fine".
 
