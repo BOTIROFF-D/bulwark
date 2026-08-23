@@ -135,6 +135,8 @@ The algorithm is [Ongaro and Ousterhout's](https://raft.github.io/raft.pdf), and
 
 The testing approach comes from [FoundationDB](https://apple.github.io/foundationdb/testing.html), which built its own language to get deterministic simulation, and [TigerBeetle](https://github.com/tigerbeetle/tigerbeetle), whose VOPR does the same for a financial ledger. [Jepsen](https://jepsen.io/) attacks the problem from outside and is where linearizability checking of real systems became standard practice; [Knossos](https://github.com/jepsen-io/knossos) and [Porcupine](https://github.com/anishathalye/porcupine) are the checkers this one is a small relative of. The no-I/O node design is [etcd's](https://github.com/etcd-io/raft).
 
+Part of a set: [unflake](https://github.com/BOTIROFF-D/unflake) samples the schedules, this tests consensus with them, [adya](https://github.com/BOTIROFF-D/adya) tests transaction isolation, and [pnueli](https://github.com/BOTIROFF-D/pnueli) proves small instances outright instead of sampling.
+
 ## Who wrote this
 
 [Doniyor Botirov](https://dbit.one/en/founder), founder of [dbit.one](https://dbit.one/en). The reasoning behind this repository at length — the four ways an acknowledged write disappears, and why the museum exists: [The master dies: what actually happens to your data](https://dbit.one/en/blog/raft-consensus-deterministic-simulation).
